@@ -1514,7 +1514,479 @@ backspace_button.pack(side=RIGHT)
 
 window.mainloop()
 
+71 checkbox.py
+from tkinter import *
 
+def display():
+    if(x.get()==1):
+        print("You agree!")
+    else:
+         print("Youd don't agree!")
+
+window = Tk()
+
+x = IntVar()
+
+#python_photo = PhotoImage(file='  ')
+
+check_button = Checkbutton(window, 
+                            text="I agree to something",
+                            variable=x,
+                            onvalue=1,
+                            offvalue=0,
+                            command=display,
+                            font=('Arial',20),
+                            fg='#00FF00',
+                            bg="black",
+                            activebackground='black',
+                            activeforeground="#00FF00",
+                            padx=25,
+                            pady=10)
+
+check_button.pack()
+
+window.mainloop()
+
+72 radio buttons.py
+# radio button = similar to checkbox, but you can only select one from a group from tkinter import *
+
+from tkinter import *
+
+food = ["pizza", "hamburger","hotdog"]
+
+#def order():
+    #if(x.get()==0):
+        #print("You ordered pizza!")
+    #elif(x.get()==1):
+        #print("You ordered a hamburger!")
+    #elif(x.get()==2):
+        #print("You ordered a hotdog!")
+    #else:
+        #print("huh?")
+
+window =Tk()
+
+#pizzaImage = PhotoImage(file='file.png')
+#hamburgerImage = PhotoImage(file='file.png')
+#hotdogImage = PhotoImate(file='file.png')
+#foodImages = [pizzaImage,hamburgerImage,hotdogImage]
+
+x = IntVar()
+
+for index in range(len(food)):
+    radiobutton = Radiobutton(window,
+                            text=food[index], # adds text to radio buttons
+                            variable=x,#groups radiobuttons together if they share the same variable
+                            value=index,#assigns each radiobutton a different value
+                            padx = 25,#adds padding on x-axis
+                            pady = 25,, 
+                            font=("Impact",50),
+                            image= foodImages[index] #add image to radiobutton
+                            compound= 'left', #adds image & text (left-side)
+                            indicatoron=0, #eliminate circle indicators
+                            width= 375, #sets width of radio buttons
+                            command=order) #sets command of radiobutton to funtion
+    radiobutton.pack(anchor=W)
+
+window.mainloop()
+
+73 scale.py
+from tkinter import *
+
+def submit():
+    print("The temperature is: "+ str(scale.get())+ " degrees C")
+
+window = Tk()
+
+scale=Scale(window,from_=0,to=100)
+scale = Scale(window,
+              from_=100,
+              to=0,
+              length=600,
+              orient=VERTICAL,
+              font=('Consolas',20),
+              tickinterval = 10,
+              showvalue = 0,
+              resolution =5,
+              troughcolor='#69EAFF',
+              fg='#FF1C00',
+              bg='black')
+
+scale.set(scale['from']-scale['to']/2+scale['to'])
+scale.pack()
+
+button = Button(window,text='submit',command=submit)
+button.pack()
+
+window.mainloop()
+
+74 listbox.py
+# listbox = A listing of selectable text items within it's own container
+
+
+def submit():
+
+    food = []
+
+    for index in listbox.curselection():
+        food.insert(index,listbox.get(index))
+
+    print("You have ordered: ")
+    for index in food:
+        print(index)
+    #print(listbox.get(listbox.curselection()))
+
+def add():
+    listbox.insert(listbox.size(),entryBox.get())
+    listbox.config(height=listbox.size())
+
+def delete():
+    for index in reversed(listbox.curselection()):
+        listbox.delete(index)
+
+    listbox.config(height=listbox.size())
+
+from tkinter import *
+
+window = Tk()
+
+listbox = Listbox(window,
+                  bg="#f7ffde",
+                  font=("Constantia",35),
+                  width=12,
+                  selectmode=MULTIPLE)
+listbox.pack()
+
+listbox.insert(1,"pizza")
+listbox.insert(2,"pasta")
+listbox.insert(3,"garlic bread")
+listbox.insert(4,"soup")
+listbox.insert(5,"salad")
+
+listbox.config(height=listbox.size())
+
+entryBox=Entry(window)
+entryBox.pack()
+
+addButton=Button(window,text="add",command=add)
+addButton.pack()
+
+submitButton=Button(window,text="submit",command=submit)
+submitButton.pack()
+
+deleteButton=Button(window,text="delete",command=delete)
+deleteButton.pack()
+
+
+window.mainloop()
+
+75 messagebox.py
+from distutils.log import info
+from tkinter import *
+from tkinter import messagebox # import messagebox library
+
+def click():
+    #messagebox.showinfo(title="This is an info message box",message="You are a person")
+    #messagebox.showinfo(title="WARNING!!!",message="You have a virus")
+    #messagebox.showwarning(title="WARNING!!!",message="You have a virus")
+    #messagebox.showerror(title="ERROR!!!",message="Something went wrong :(")
+    #if messagebox.askokcancel(title="ask ok cancel",message="Do you want to do the thing?"):
+    #    print("You did a thing!")
+    #else:
+    #    print("You canceled a thing! :(")
+
+    #if messagebox.askretrycancel(title="ask ok cancel",message="Do you want to retry the thing?"):
+    #    print("You retried a thing!")
+    #else:
+    #    print("You canceled a thing! :(")
+
+
+    #if messagebox.askyesno(title="ask yes or no",message="Do you like cake?"):
+    #    print("I like cake too!")
+    #else:
+    #    print("Why don't you like cake? :(")
+
+    #answer = messagebox.askquestion(title="ask question",message="Do you like pie?")
+    #if (answer == 'yes'):
+    #    print("I like pie too!")
+    #else:
+    #    print("Why don't you like pie?")
+
+    answer = messagebox.askyesnocancel(title='Yes no cancel', message='Do you like to code?',icon='info')
+    if (answer==True):
+        print('You like to code')
+    elif(answer==False):
+        print('Then why are you watching a video on coding?')
+    else:
+        print('You have dodged the question')
+
+
+window = Tk()
+
+button = Button(window, command=click,text="click me")
+button.pack()
+
+window.mainloop()
+
+76 colorchooser.py
+from tkinter import *
+from tkinter import colorchooser
+from turtle import color #submodule
+
+def click():
+    color = colorchooser.askcolor()
+    #print(color)
+    colorHex=color[1]
+    #print(colorHex)
+    window.config(bg=color[1]) #change background color
+
+window = Tk()
+window.geometry("420x420")
+button = Button(text="click me",command=click)
+button.pack()
+window.mainloop()
+
+77 text area.py
+# text widget = functions like a text area, you can enter multiple lines of test
+
+from tkinter import *
+
+def submit():
+    input = text.get("1.0",END)
+    print(input)
+
+window = Tk()
+text = Text(window,
+            bg="light yellow",
+            font=("Ink Free",25),
+            height=8,
+            width=20,
+            padx=20,
+            pady=20)
+text.pack()
+button= Button(window,text ='submit',command=submit)
+button.pack()
+window.mainloop()
+
+78 file dialog.py
+from tkinter import *
+from tkinter import filedialog
+
+def openFile():
+    filepath = filedialog.askopenfilename(initialdir="C:\\Users\\bryan\\Desktop",
+                                          title="Open file okay?",
+                                          filetypes= (("text files","*.txt"),
+                                          ("all files","*.*")))
+    file=open(filepath,'r')
+    print(file.read())
+    file.close()
+
+window = Tk()
+button = Button(text="Open",command=openFile)
+button.pack()
+window.mainloop()
+
+79 save a file.py
+from tkinter import *
+from tkinter import filedialog
+
+def saveFile():
+    file = filedialog.asksaveasfile(initialdir="C:\\Users\\bryan\\Desktop",
+                                    defaultextension=".txt",
+                                    filetypes=[
+                                        ("Text file",".txt"),
+                                        ("HTML file",".html"),
+                                        ("All files",".*"),
+                                    ])
+    if file is None:
+        return
+    #filetext = str(text.get(1.0,END))
+    filetext = input("Enter some text I guess: ")
+    file.write(filetext)
+    file.close()
+
+window = Tk()
+button = Button(text='save',command=saveFile)
+button.pack()
+text=Text(window)
+text.pack()
+window.mainloop()
+
+80 menubar.py
+from tkinter import *
+
+def openFile():
+    print("opened a file")
+
+def saveFile():
+    print("File has been saved")
+
+def cut():
+    print("You cut some text")
+
+def copy():
+    print("You copied some text")
+
+def paste():
+    print("You pasted some text")
+
+window = Tk()
+
+#openImage = PhotoImage(file="file.png")
+
+menubar = Menu(window)
+window.config(menu=menubar)
+
+fileMenu= Menu(menubar,tearoff=0,font=("MV Boli",15))
+menubar.add_cascade(label="File", menu=fileMenu)
+fileMenu.add_command(label="Open",command=openFile)#,image=openImage,compound='left')
+fileMenu.add_command(label="Save",command=saveFile)
+fileMenu.add_separator()
+fileMenu.add_command(label="Exit",command=quit)
+
+editMenu=Menu(menubar,tearoff=0,font=("MV Boli",15))
+menubar.add_cascade(label="Edit", menu=editMenu)
+editMenu.add_command(label="Cut",command=cut)
+editMenu.add_command(label="Copy",command=copy)
+editMenu.add_command(label="Paste",command=paste)
+
+window.mainloop()
+
+81 frames.py
+# frame =   a rectangular container to group and hold widgets
+
+from tkinter import *
+
+window = Tk()
+
+frame= Frame(window,bg="pink",bd=5,relief=RAISED)
+#frame.pack()
+frame.place(x=100,y=100)
+
+
+Button(frame,text="W",font=("Consolas",25),width=3).pack(side=BOTTOM)
+Button(frame,text="A",font=("Consolas",25),width=3).pack(side=LEFT)
+Button(frame,text="S",font=("Consolas",25),width=3).pack(side=LEFT)
+Button(frame,text="D",font=("Consolas",25),width=3).pack(side=LEFT)
+
+
+window.mainloop()
+
+82 new windows.py
+from tkinter import *
+
+def create_window():
+    new_window=Tk()         #Toplevel() = new window 'on 'top of other windows.
+                            #Tk() = new independent window
+    old_window.destroy()    #close out of old window
+
+old_window = Tk()
+
+Button(old_window,text="create new window",command=create_window).pack()
+
+old_window.mainloop()
+
+83 window tabs.py
+from tkinter import *
+from tkinter import ttk
+from tkinter.tix import NoteBook
+
+window = Tk()
+
+notebook = ttk.Notebook(window) #widget that manages a collection of windows/displays
+
+tab1 = Frame(notebook)  #new frame for tab1
+tab2 = Frame(notebook)  #new frame for tab2
+
+notebook.add(tab1,text="Tab 1")
+notebook.add(tab2,text="Tab 2")
+notebook.pack(expand=True,fill="both")  #expand = expand to fill any space not otherwise used
+                                        # fill = fill space on x and y axis
+
+Label(tab1,text="Hello, this is Tab #1",width=50,height=25).pack()
+Label(tab2,text="Goodbye, this is tab #2",width=50,height=25).pack()
+
+window.mainloop()
+
+84 grid.py
+from tkinter import *
+
+#grid() = geometry manager that organizes widgets in a table-like structure in a parent window
+
+def submit():
+    print(firstNameEntry + lastNameEntry)
+
+window = Tk()
+
+titleLabel= Label(window,text="Enter your info",font=("Arial",25)).grid(row=0,column=0,columnspan=2)
+
+firstNameLabel = Label(window, text="First name: ",width=20,bg="red").grid(row=1,column=0)
+firstNameEntry = Entry(window).grid(row=1,column=1)
+
+lastNameLabel = Label(window, text="Last name: ",bg="green").grid(row=2,column=0)
+lastNameEntry = Entry(window).grid(row=2,column=1)
+
+emailLabel = Label(window, text="email: ",bg="blue",width=30).grid(row=3,column=0)
+emailEntry = Entry(window).grid(row=3,column=1)
+
+
+submitButton=Button(window,text="submit",command=submit).grid(row=4,column=0,columnspan=2)
+
+window.mainloop()
+
+85 progress bar.py
+from tkinter import *
+from tkinter.ttk import *
+import time
+from tokenize import String
+
+def start():
+    GB = 10
+    download = 0
+    speed = 1
+    while(download<GB):
+        time.sleep(.05)
+        bar['value']+=(speed/GB)*100
+        download+=speed
+        percent.set(str(int((download/GB)*100))+"%")
+        text.set(str(download)+"/"+str(GB)+" GB completed")
+        window.update_idletasks()
+
+
+window = Tk()
+
+percent = StringVar()
+text = StringVar()
+
+bar = Progressbar(window,orient=HORIZONTAL,length=300)
+bar.pack(pady=10)
+
+percentLabel= Label(window,textvariable=percent).pack()
+taskLabel= Label(window,textvariable=text).pack()
+
+button= Button(window,text="download",command=start).pack()
+
+window.mainloop()
+
+86 canvas.py
+# canvas = widget htat is used to draw graphs, plots, images in a window
+
+from tkinter import *
+window = Tk()
+
+canvas = Canvas(window,height=500,width=500)
+#canvas.create_line(0,0,500,500,fill="blue",width=5)
+#canvas.create_line(0,500,500,0,fill="red",width=5)
+#canvas.create_rectangle(50,50,250,250,fill="purple",width=5)
+#points = [250,0,500,500,0,500]
+#canvas.create_polygon(points,fill="yellow",outline="black",width=5)
+#canvas.create_arc(0,0,500,500,fill="green",style=PIESLICE,start=180,extent=180)
+canvas.create_arc(0,0,500,500,fill="red",extent=180,width=10)
+canvas.create_arc(0,0,500,500,fill="white",extent=180,start=180,width=10)
+canvas.create_oval(190,190,310,310,fill="white",width=10)
+canvas.pack()
+
+window.mainloop()
 
 
 
