@@ -1,0 +1,146 @@
+2 variables.py
+
+# variable = container for a value. Behaves as the value that it contains
+
+# first_name = "Dude" string
+# last_name = "Bro"
+# full_name = first_name +" " last_name
+
+#human = False boolean
+#print("Are you a human: " + str(human))
+#print(human)
+#print(type(human))
+
+#height = 250.5 float
+#print("Your height is: " + str(height)+"cm")
+#print(type(height))
+
+#age = 21 integer
+#age = age + 1
+#age += 1
+
+#print ("Your age is: " + str(age))
+#print(type(age))
+
+
+#print("Hello "+full_name)
+
+#print(type(name))
+#print("Hello " +name)
+
+
+3 multiple assignment.py
+# multiple assignment = allows us to assign multiple variables at the same time in one line of code
+
+#name = "Dude"
+#age = 21
+#attractive = True
+
+#name, age, attractive = "Dude", 21, True
+
+#print(name)
+#print(age)
+#print(attractive)
+
+#Spongebob = 30
+#Patrick = 30
+#Sandy = 30
+#Squidward = 30
+
+Spongebob = Patrick = Sandy = Squidward = 30
+print(Spongebob)
+print(Patrick)
+print(Sandy)
+print(Squidward)
+
+4 string methods.py
+name = "Dude Bro"
+
+#print(len(name))
+#print(name.find("D"))
+#print(name.capitalize())
+#print(name.upper())
+#print(name.lower())
+#print(name.isdigit())
+#print(name.isalpha())
+#print(name.count("o"))
+#print(name.replace("o","a"))
+#print(name*3)
+
+5 type cast.py
+#type casting = convert the data type of a value to another data type
+
+x = 1 #int
+y = 2.0 #float
+z = "3" #str
+
+x = float(x)
+y = int(y)
+z = int(z)
+
+#int(y)
+
+print("x is " +str(x))
+print("y is " +str(y))
+print(z*3)
+
+6 user input.py
+name = input("what is your name?: ")
+age = input ("How old are you?: ")
+age = int(age) + 1
+height = float(input("How tall are you?: "))
+
+print("Hello " + name )
+print("You are " + str(age)+ " years old")
+print("You are " +str(height) + "cm tall")
+
+7 math functions.py
+import math
+
+pi = 3.14
+x = 1
+y = 2
+z = 3
+
+# print(round(pi)) rounds
+# print(math.ceil(pi)) rounds up
+# print(math.floor(pi)) rounds down
+# print(abs(pi)) absolute value
+# print(pow(pi,2)) raise by power of
+# print(math.sqrt(pi)) square root
+# print(max(pi,x,y,z)) finds highest value
+# print (min(pi,x,y,z)) finds lowest value
+
+8 string slicing.py
+# slicing =     create a substring by extracting elements from another string
+#               indexing[] or slice()
+#               [start:stop:step]
+
+# name = "Bro Code"
+
+# first_name = name[0:3] [0:3]
+# last_name = name [4:] [4:end]
+# funky_name = name[::2] [0:end:2]
+# reversed_name = name[::-1] [0:end:-1]
+
+# print(reversend_name)
+
+website1 = "http://wikipedia.com"
+website2 = "http://google.com"
+
+slice = slice(7,-4)
+print(website1[slice])
+
+9 if statements.py
+# if statement = a block of code that will execute if it's condition is true
+
+age = int(input("How old are you?: "))
+
+if age >= 18:
+    print("You are an adult")
+elif age == 100:
+    print("You are a century old")
+elif age < 0:
+    print("You haven't been born yet")
+else:
+    print("You are a minor")
