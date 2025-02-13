@@ -144,3 +144,219 @@ elif age < 0:
     print("You haven't been born yet")
 else:
     print("You are a minor")
+
+10 logical operators.py
+temp = int(input("What is the temperature outside?: "))
+
+if not(temp >= 0 and temp <= 30):
+    print("the temperature is good today!")
+    print("Go outside!")
+elif not(temp < 0 or temp > 30):
+    print("The temperature is bad today!")
+    print("Stay inside!")
+
+11 while loops.py
+# while loop = a statement that will execute it's block of code,
+#               as long as it's condition remains true
+
+name = None
+
+while not name == 0:
+    name = input("Enter your name: ")
+
+print("Hello "+name)
+
+12 for loop.py
+import time
+# for loop = a statement that will execute it's block of code
+#            for a limited amount of times
+#
+#            while loop = uinlimited
+#            for loop = limited
+
+# for i in range(10):
+#    print(i+1)
+
+# for i in range(50,100+1,2):
+#    print(i)
+
+# for i in "Bryant Logan":
+#    print(i)
+
+for seconds in range(10,0,-1):
+    print(seconds)
+    time.sleep(1)
+print("Happy New Year!")
+
+13 nested loops.py
+# nested loops = The "inner loop" will finish all of it's iterations before
+#                finishing one iteration of the "outer loop"
+
+rows = int(input("How many rows?: "))
+columns = int(input("How many columns?:" ))
+symbol = input("Enter a symbol to use: ")
+
+for i in range(rows):
+    for j in range(columns):
+        print(symbol, end="")
+    print()
+
+14 break continue pass.py
+# Loop Control Statements = change a loop's execution from its normal sequence
+
+# break = used to terminate the loop entirely
+# continue - skips to the next iteration of the loop
+# pass = does nothing, acts as a placeholder
+
+#while True:
+    #name = input("Enter your name: ")
+    #if name != "":
+        #break
+
+#phone_number ="123-456-7890"
+
+#for i in phone_number:
+    #if i == "-":
+        #continue
+    #print(i,end="")
+
+for i in range(1,20):
+    if i == 13:
+        pass
+    else:
+        print(i)
+
+15 lists.py
+# list = used to store multiple items in a single variable
+# each item in a list is called an element
+
+
+food = ["pizza", "hamburger", "hotdog","spaghetti", "pudding"]
+
+food[0] = "sushi"
+
+#food.append("ice cream")
+#food.remove("hotdog")
+#food.pop()
+#food.insert(0,"cake")
+#food.sort()
+#food.clear()
+for x in food:
+    print(x)
+
+16_2D lists.py
+#2D lists = a list of lists
+
+drinks = ["coffee", "soda", "tea"]
+dinner = ["pizza", "hamburger", "hotdog"]
+dessert = ["cake", "ice cream"]
+
+food = [drinks, dinner, dessert]
+
+print(food[0][1])
+
+17 tuples.py
+# tuple = collection which is ordered an unchangeable
+#         used to group together related data
+
+student =("Bryant",21,"male")
+
+print(student.count("Bryant"))
+student.index("male")
+print(student.index("male"))
+
+for x in student:
+    print(x)
+
+if "Bryant" in student:
+    print("Bryant is here!")
+
+18 sets.py
+# set = collection which is unorderd, unindexed. No duplicate values
+
+utensils = {"fork","spoon","knife","knife","knife"}
+dishes = ["bowl", "plate", "cup","knife"]
+
+#utensils.add("napkin")
+#utensils.remove("fork")
+#utensils.clear()
+#utensils.update(dishes)
+#dinner_table = utensils.union(dishes)
+
+#print(utensils.difference(dishes))
+print(utensils.intersection(dishes))
+#for x in dinner_table:
+#print(x)
+
+19 dictionary.py
+# dictionary = A changeable, unordered collection of unique key:value pairs
+#              Fast because they use hashing, allow us to access a value quickly
+
+capitals = {'USA':'Washington DC',
+            'India':'New Dehli',
+            'China':'Beijing',
+            'Russia':'Moscow'}
+
+
+capitals.update({'Germany':'Berlin'})
+capitals.update({'USA':'Las Vegas'})
+capitals.pop('China')
+capitals.clear()
+#print(capitals['Russia'])
+#print(capitals.get('Germany'))
+#print(capitals.keys())
+#print(capitals.values())
+#print(capitals.items())
+for key,value in capitals.items():
+    print(key,value)
+
+20 index operator.py
+# index operator [] = gives access to a sequence's element (str,list,tuples)
+
+name = "bryant Logan"
+
+#if(name[0] .islower()):
+ #   name = name.capitalize()
+
+first_name = name[0:6].upper()
+last_name = name[7:].lower()
+last_character = name[-1]
+print(last_character)
+
+21 functions.py
+# function = a block of code which is executed only when it is called.
+
+from unicodedata import name
+
+
+def hello(first_name, last_name, age):
+    print("hello, " +first_name +last_name)
+    print("you are " +str(age) +" years old")
+    print("have a nice day!")
+
+
+hello("Bryant ","Logan", 21)
+
+22 return statement.py
+# return statement = functions send Python values/object back to the caller.
+#                    These values/objects are known as the function's return value
+
+number1 = input("What is number1?: ")
+number2 = input("What is number2?: ")
+
+def multiply(number1,number2):
+    return number1 * number2
+
+x = multiply(int(number1),int(number2))
+
+print(x)
+
+def multiply(number1,number2):
+    return number1 * number2
+x = multiply(6,8)
+
+print(x)
+
+
+
+
