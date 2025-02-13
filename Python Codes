@@ -357,6 +357,450 @@ x = multiply(6,8)
 
 print(x)
 
+23 keyword arguments.py
+#keyword arguments = arguments preceeded by an identifier when we pass them to a fuction
+#                    The order of the arguments doesn't matter, unlike positional arguments
+#                    Python knows the names of the arguments that our funtion receives
+
+def hello(first,middle,last):
+    print("Hello, "+first +middle +last)
+
+hello("Code","Dude","Bro")
+
+24 nested function calls.py
+# nested function calls = function calls inside other function calls
+#                         innermost function calls are resolved first
+#                         returned value is used as argument for the next outer function
+
+#num = input("Enter a whole positive number: ")
+#num = float(num)
+#num = abs(num)
+#num = round(num)
+#print(num)
+
+print(round(abs(float(input("Enter a whole positive number: ")))))
+
+25 variable scope.py
+# scope = The region that a variable is recognized
+#         A variable is only available from inside the region it is created.
+#         A global and locally scoped versions of a variable can be created
+
+name = "Logan" #global scope = available inside & outside of functions
+
+def display_name():
+    name = "Bryant"    #local scope (available only inside this function)
+    print(name)
+
+display_name()
+print(name)
+
+#L = Local
+#E = Enclosing
+#G = Global
+#B = Built-in
+
+26 args.py
+# *args = parameter that will pack all arguments into a tuple
+#         useful so that a function can accept a varying amount of arguments
+
+def add(*args):
+    sum = 0
+    stuff = list(stuff)
+    stuff[0] = 0
+    for i in stuff:
+        sum += i
+    return sum
+
+print(add(1,2,3,4,5,6))
+
+27 kwargs.py
+#  **kwargs = parameter that will pack all arguments into a directory
+#             useful so that a function can accept a varying amount of keyword arguments
+
+def hello(**kwargs):
+    #print("Hello " + kwargs['first'] + " " + kwargs['last'])
+    print("Hello,",end=" ")
+    for key,value in kwargs.items():
+        print(value, end=" ")
+
+hello(title="Mr.",first="Bryant",middle="Gunthrope",last="Logan")
+
+28 string format.py
+#str.format() = optional method that gives users
+#               more control when displaying output
+
+#animal = "cow"
+#item = "moon"
+
+#print("The "+animal+" jumped over the "+item)
+
+#print("The {} jumped over the {}".format(animal,item))
+#print("The {1} jumped over the {0}".format(animal,item)) #positional argument
+#print("The {animal} jumped over the {item}".format(animal="cow",item="moon"))
+
+#text = "The {} jumped over the {}"
+#print(text.format(animal,item))
+
+#name = "Bryant"
+
+#print("Hello, my name is {}".format(name))
+#print("Hello, my name is {:10}. Nice to meet you".format(name)) #10 spaces
+#print("Hello, my name is {:<10}. Nice to meet you".format(name)) #left-alight
+#print("Hello, my name is {:>10}. Nice to meet you".format(name)) #right-align
+#print("Hello, my name is {:^10}. Nice to meet you".format(name)) #center-align
+
+number = 1000
+
+print("the number is {:,}".format(number)) #add comma to 1000th places
+print("the number is {:b}".format(number)) #binary
+print("the number is {:o}".format(number)) #octale
+print("the number is {:X}".format(number)) #Hexadecimal
+print("the number is {:e}".format(number)) #scientific notation
+
+29 random numbers.py
+# random numbers
+
+import random
+
+x = random.randint(1,6)
+y = random.random()
+
+myList = ['rock','paper','scissors']
+z = random.choice(myList)
+
+cards = [1,2,3,4,5,6,7,8,9,"J","Q","K","A"]
+
+random.shuffle(cards)
+print(cards)
+
+30 exception handling.py
+#exception = event detected during execution that interrupts the flow of a program
+
+from concurrent.futures.process import _ResultItem
+
+try:
+    numerator = int(input("Enter a number to divide: "))
+    denominator = int(input("Enter a number to divide by: "))
+    result = numerator / denominator
+except ZeroDivisionError as e:
+    print(e)
+    print("You can't divide by zero! idiot!")
+except ValueError as e:
+    print(e)
+    print("Enter only numbers, please")
+except Exception as e:
+    print(e)
+    print("something went wrong :(")
+else:
+    print(result)
+finally:
+    print("This will always execute")
+
+31 file detection.py
+import os
+
+path = "C:\\Users\\bryan\\Desktop\\madlibs.py"
+
+if os.path.exists(path):
+    print("That location exists")
+    if os.path.isfile(path):
+        print("That is a file")
+else:
+    print("That location doesn't exist")
+
+32 read a file.py
+try:
+    with open("C:\\Users\\bryan\\Desktop\\test.txt") as file:
+        print(file.read())
+except FileNotFoundError:
+    print("That file was not found")
+
+33 write a file.py
+text = "Have a nice day! see ya"
+with open('test.txt', 'a') as file:
+    file.write(text)
+
+34 copy a file.py
+# copyfile() =  copies contents of a file
+# Copy() =      copyfile() + permission mode + destination can be a directory
+# copy2() =     copy() + copies metadata (file's creation and modification times)
+
+import shutil
+
+shutil.copyfile('test.txt','copy.txt') #src,dst
+
+35 moving a file.py
+import os
+
+source = "C:\\Users\\bryan\\Desktop\\AWS\\AWS Certifications\\Solutions Architect Associate\\code\\test.txt"
+destination = "C:\\Users\\bryan\\Desktop\\Photography"
+
+try:
+    if os.path.exists(destination):
+        print("There is already a file there")
+    else:
+        os.replace(source,destination)
+        print(source+" was moved")
+except FileNotFoundError:
+    print(source+" was not found")
+
+36 delete a file.py
+import os
+
+path = "C:\\Users\\bryan\\Desktop\\AWS\\AWS Certifications\\Solutions Architect Associate\\code\\test.txt"
+
+os.remove(path)
+
+try:
+    os.remove(path)
+except FileNotFoundError:
+    print("That file was not found")
+except PermissionError:
+    print("You do not have permission to delete that")
+
+37 modules.py
+# module = a file containing python code. May contain functions, classes, etc.
+# used with module programming, which is to separate a program into parts
+
+#import other file as nickname
+#from module import hello,bye
+#help(modules)
+
+hello()
+bye()
+
+38 rockpaperscissors.py
+import random
+
+while True:
+    choices = ["rock", "paper", "scissors"]
+
+    computer = random.choice(choices)
+    player = None
+
+    while player not in choices:
+        player = input("rock, paper, or scissors?: ").lower()
+
+        if player == computer:
+            print("computer: ",computer)
+            print("player: ",player)
+            print("It's a tie!")
+
+        elif player == "rock":
+            if computer == "paper":
+                print("computer: ",computer)
+                print("player: ",player)
+                print("You lose!")
+            if computer == "scissors":
+                print("computer: ",computer)
+                print("player: ",player)
+                print("You win!")
+        elif player == "scissors":
+            if computer == "paper":
+                print("computer: ",computer)
+                print("player: ",player)
+                print("You win!")
+            if computer == "rock":
+                print("computer: ",computer)
+                print("player: ",player)
+                print("You lose!")
+        elif player == "paper":
+            if computer == "scissors":
+                print("computer: ",computer)
+                print("player: ",player)
+                print("You lose!")
+            if computer == "rock":
+                print("computer: ",computer)
+                print("player: ",player)
+                print("You win!")            
+        play_again = input("Play again? (yes/no: ").lower()
+
+    if play_again != "yes":
+        break
+
+print("bye")
+
+38 rps.py
+import random
+
+def play():
+    user = input("What's your choice? 'r' for rock, 'p' for paper, 's' for scissors\n")
+    computer = random.choice(['r', 'p', 's'])
+
+    if user == computer:
+        return 'It\'s a tie'
+    
+    if is_win(user, computer):
+        return 'You won'
+   
+    return 'You lost!'
+
+def is_win(player, opponent):
+    if (player == 'r' and opponent =='s') or (player == 's' and opponent == 'p') \
+        or (player =='p' and opponent =='r'):
+        return True
+
+print(play())
+
+39 quiz game.py
+#--------------
+def new_game():
+    
+    guesses = []
+    correct_guesses = 0
+    question_num = 1
+
+    for key in questions:
+        print("-----------")
+        print(key)
+        for i in options[question_num-1]:
+            print(i)
+        guess = input("Enter (A, B, C, or D): ")
+        guess = guess.upper()
+        guesses.append(guess)
+
+        correct_guesses += check_answer(questions.get(key), guess)
+        
+        check_answer(questions.get(key),guess)
+
+        question_num += 1
+    
+    display_score(correct_guesses, guesses)
+
+
+
+#--------------
+def check_answer(answer, guess):
+    
+    if answer == guess:
+        print("Correct!!")
+        return 1
+    else:
+        print("WRONG!!!")
+        return 0
+
+#--------------
+def display_score(correct_guesses, guesses):
+    print("-----------")
+    print("RESULTS")
+    print("-----------")
+    
+    print("Answers: ", end=" ")
+    for i in questions:
+        print(questions.get(i), end=" ")
+    print()
+
+    print("Guesses: ", end="")
+    for i in guesses:
+        print(i, end=" ")
+    print()
+
+    score = int((correct_guesses/len(questions)) * 100)
+    print("Your score is: "+str(score)+"%")
+#--------------
+def play_again():
+    response = input("Do you want to play again? (yes or no): ")
+    response = response.upper()
+
+    if response == "YES":
+        return True
+    else:
+        return False
+#--------------
+
+
+questions = {
+"When was the Declaration of Independence signed?: ": "A",
+"How often do we have a lear year?: ": "B",
+"Who sang the song 'Thriller'?: ": "C",
+"When did man land on the moon?: ": "A"
+}
+
+options = [["A. 1776", "B. 1492", "C. 1849", "D. 1700"],
+          ["A. Yearly", "B. Every 4 years", "C. Every other year", "D. Every 5 years"],
+          ["A. Stevie Wonder", "B. The Jackson 5", "C. Michael Jackson", "D. The Backstreet Boys"],
+          ["A. 1969", "B. 1959", "C. 2001", "D. 1929"]]
+
+new_game()
+
+while play_again():
+    new_game()
+
+print("Thanks for playing!")
+
+40 OOPS.py
+### In separate python file:
+class Car:
+
+    def __init__(self,make,model,year,color):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.color = color
+
+
+    def drive(self):
+        print("This car is driving")
+
+    def stop(self):
+        print("This car is stopped")
+
+### In working file: 
+# import Car
+
+car_1 = Car("Chevy","Corvette",2021,"blue")
+car_2 = Car("Ford","Mustant",2022,"Red")
+
+print(car_1.make)
+print(car_1.model)
+print(car_1.year)
+print(car_1.color)
+
+car_1.drive()
+car_1.stop()
+
+41 classvairables.py
+class Car:
+
+    wheels = 4 #class variable
+
+    def __init__(self,make,model,year,color):
+        self.make = make #instance variable
+        self.model = model #instance variable
+        self.year = year #instance variable
+        self.color = color #instance variable
+
+42 inheritance.py
+class Animal:
+    alive = True
+    
+    def eat(self):
+        print("This animale is eating")
+    
+    def sleep(self):
+        print("This animal is asleep")
+
+class Rabbit(Animal):
+    def run(self):
+        print("This rabbit is running")
+
+class Fish(Animal):
+    def swim(self):
+        print("This fish is swimming")
+
+class Hawk(Animal):
+    def fly(self):
+        print("This hawk is flying")
+
+rabbit = Rabbit()
+fish = Fish()
+hawk = Hawk()
+
+rabbit.run()
+fish.swim()
+hawk.fly()
+
+
 
 
 
