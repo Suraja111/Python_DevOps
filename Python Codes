@@ -1,3 +1,7 @@
+1.helloWorld.py
+print("hello world!")
+print("it's really good!")
+
 2 variables.py
 
 # variable = container for a value. Behaves as the value that it contains
